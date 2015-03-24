@@ -1,0 +1,76 @@
+<html>
+  <head>
+     <title>JS Code Challenge Question 2</title>
+  </head>
+   <style>
+
+      body {
+        font-family: Helvetica, Arial, sans-serif;
+        width: 960px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        color: black;
+        background-color: E7B6FF;
+        padding: 5px 0;
+        text-align: center;
+      }
+
+      p {
+        text-align: center;
+      }
+
+      #wrapper {
+
+        text-align: center;
+        width: 780px;
+        margin: 0 auto;
+      }
+
+      button {
+        /*display: inline-block;*/
+        padding: 10px;
+        font-size: 18px;
+        background-color: E7B6FF;
+        color: black;
+        border-radius: 5px;
+        text-shadow: 0 1px 1px #454545;
+        width: 240px;
+        height: 40px;
+      }
+
+
+
+    </style>
+  <body>
+
+ <!-- Image not working??? <li><img src="./img/ozzy.jpg" alt="Text to display when image can not be displayed"></li> -->
+    <h1>The Decision</h1>
+    <p> Do you think you should pick me to join the JavaScript Development Accelerator? Click the button below to find out.</p>
+
+    <div id="wrapper">
+    <button id="PickMeButton">Click for the answer</button>
+  </div>
+    <p id="PickMe"> </p>
+
+    <!-- include jQuery here -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+     <script>
+
+    $(document).ready(function() {
+     // Can't figure out how to respond with an image. :(
+     $("button").on("click", function() {
+      $.get("/pickme", function(response) {
+        $("#PickMe").text(response);
+        var newElement = document.createElement('p');
+        newElement.innerHTML = '<a href="http://cryptic-hollows.herokuapp.com/">My Site</a> and <a href="http://localhost:3000/img/scores.png">My Scores</a>';
+        var list = document.getElementById('PickMe');
+        list.appendChild(newElement);
+    });
+  });
+});
+     </script>
+  </body>
+</html>
